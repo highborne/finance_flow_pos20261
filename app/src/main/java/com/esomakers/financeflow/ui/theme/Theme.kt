@@ -1,26 +1,71 @@
 package com.esomakers.financeflow.ui.theme
 
+import android.app.Activity
+import android.os.Build
+import android.util.Log
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 
-private val MonochromeDarkColorScheme = darkColorScheme(
+private val DarkColorScheme = darkColorScheme(
     background = BlackBg,
     surface = SurfaceDark,
     surfaceVariant = BorderDark,
-    onBackground = TextPrimary,
-    onSurface = TextPrimary,
-    onSurfaceVariant = TextMuted,
+    onBackground = TextPrimaryDark,
+    onSurface = TextPrimaryDark,
+    onSurfaceVariant = TextMutedDark,
     primary = White,
     onPrimary = BlackBg,
     outline = BorderDark
 )
+
+private val LightColorScheme = lightColorScheme(
+    background = White,
+    surface = SurfaceLight,
+    surfaceVariant = BorderLight,
+    onBackground = TextPrimaryLight,
+    onSurface = TextPrimaryLight,
+    onSurfaceVariant = TextMutedLight,
+    primary = BlackBg,
+    onPrimary = White,
+    outline = BorderLight
+)
 @Composable
 fun FinanceFlowTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
+    val colorScheme = when {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            val context = LocalContext.current
+            if(darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        }
+        darkTheme -> DarkColorScheme
+        else -> LightColorScheme
+    }
+
+    Log.d("THEME_DEBUG", "Dark Theme Ativo pelo Sistema? = $darkTheme")
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            window.statusBarColor = colorScheme.background.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+        }
+    }
+
     MaterialTheme(
-        colorScheme = MonochromeDarkColorScheme,
+        colorScheme = colorScheme,
         typography = Typography,
         content = content
     )
