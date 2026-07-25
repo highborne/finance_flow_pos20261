@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.esomakers.financeflow" />
+                  <option name="mobileSdkAppId" value="1:1028026581976:android:1dacc3b9d0f67a0c51e8ad" />
+                  <option name="projectId" value="financeflow-59510" />
+                  <option name="projectNumber" value="1028026581976" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

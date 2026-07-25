@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1028026581976",
+    "project_id": "financeflow-59510",
+    "storage_bucket": "financeflow-59510.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028026581976:android:1dacc3b9d0f67a0c51e8ad",
+        "android_client_info": {
+          "package_name": "com.esomakers.financeflow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDikwXZSWV5uGtR8ngHHyNRuTR0jnn79Ik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
