@@ -35,7 +35,7 @@ data class Transaction(
     val id: String = "",
     val description: String = "",
     val amount: Double = 0.0,
-    val data: Long = System.currentTimeMillis(),
+    val date: Long = System.currentTimeMillis(),
     val type: TransactionType = TransactionType.EXPENSE,
     val category: TransactionCategory = TransactionCategory.FOOD
 )

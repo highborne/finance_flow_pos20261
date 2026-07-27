@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">FinanceFlow</string>
+
+    <string name="type_income">Receita</string>
+    <string name="type_expense">Despesa</string>
+
+    <string name="category_salary">Salário</string>
+    <string name="category_investments">Investimentos</string>
+    <string name="category_other_income">Outras Receitas</string>
+
+    <string name="category_housing">Moradia</string>
+    <string name="category_food">Alimentação</string>
+    <string name="category_transportation">Transporte</string>
+    <string name="category_health">Saúde</string>
+    <string name="category_education">Educação</string>
+    <string name="category_leisure">Lazer</string>
+    <string name="category_clothing">Vestuário</string>
+    <string name="category_subscriptions">Assinaturas</string>
+    <string name="category_dependents_and_pets">Pets Dependentes</string>
+    <string name="category_financial_expenses">Despesas Financeiras</string>
+
+    <string name="label_total_balance">Saldo Total</string>
+    <string name="label_income">Entradas</string>
+    <string name="label_expenses">Saídas</string>
+    <string name="section_recent_transactions">Últimas Movimentações</string>
+
+    <string name="title_new_transaction">Novo Lançamento</string>
+    <string name="label_amount">VALOR (R$)</string>
+    <string name="label_description">Descrição</string>
+    <string name="placeholder_description">Ex: Aluguel</string>
+    <string name="label_date">Data</string>
+    <string name="label_transaction_type">Tipo de Movimentação</string>
+    <string name="title_financial_tip">Dica Financeira</string>
+    <string name="label_recommended_category">Categoria Recomendada</string>
+    <string name="action_save">Salvar</string>
+
+    <string name="currency_symbol">R$</string>
+    <string name="date_format_pattern">dd/MM/yyyy</string>
 </resources>

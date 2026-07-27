@@ -2,7 +2,6 @@ package com.esomakers.financeflow.ui.theme
 
 import android.app.Activity
 import android.os.Build
-import android.util.Log
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -14,8 +13,16 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 
+object Spacing {
+    val extraSmall = 4.dp
+    val small = 8.dp
+    val medium = 16.dp   // default
+    val large = 24.dp
+    val extraLarge = 32.dp
+}
 private val DarkColorScheme = darkColorScheme(
     background = BlackBg,
     surface = SurfaceDark,
@@ -54,7 +61,6 @@ fun FinanceFlowTheme(
         else -> LightColorScheme
     }
 
-    Log.d("THEME_DEBUG", "Dark Theme Ativo pelo Sistema? = $darkTheme")
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
@@ -66,7 +72,7 @@ fun FinanceFlowTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = FinanceFlowTypography,
         content = content
     )
 }

@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">FinanceFlow</string>
+
+    <string name="type_income">Income</string>
+    <string name="type_expense">Expense</string>
+
+    <string name="category_salary">Salary</string>
+    <string name="category_investments">Investments</string>
+    <string name="category_other_income">Other Income</string>
+
+    <string name="category_housing">Housing</string>
+    <string name="category_food">Food</string>
+    <string name="category_transportation">Transportation</string>
+    <string name="category_health">Health</string>
+    <string name="category_education">Education</string>
+    <string name="category_leisure">Leisure</string>
+    <string name="category_clothing">Clothing</string>
+    <string name="category_subscriptions">Subscriptions</string>
+    <string name="category_dependents_and_pets">Dependents Pets</string>
+    <string name="category_financial_expenses">Financial Expenses</string>
+
+    <string name="label_total_balance">Total Balance</string>
+    <string name="label_income">Income</string>
+    <string name="label_expenses">Expenses</string>
+    <string name="section_recent_transactions">Recent Transactions</string>
+
+    <string name="title_new_transaction">New Transaction</string>
+    <string name="label_amount">AMOUNT (R$)</string>
+    <string name="label_description">Description</string>
+    <string name="placeholder_description">e.g. Rent</string>
+    <string name="label_date">Date</string>
+    <string name="label_transaction_type">Transaction Type</string>
+    <string name="title_financial_tip">Financial Tip</string>
+    <string name="label_recommended_category">Recommended Category</string>
+    <string name="action_save">Save</string>
+
+    <string name="currency_symbol">R$</string>
+    <string name="date_format_pattern">MM/dd/yyyy</string>
+</resources>
