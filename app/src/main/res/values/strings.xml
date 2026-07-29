@@ -6,6 +6,7 @@
 
     <string name="category_salary">Salário</string>
     <string name="category_investments">Investimentos</string>
+    <string name="category_freelance">Freelance</string>
     <string name="category_other_income">Outras Receitas</string>
 
     <string name="category_housing">Moradia</string>
@@ -29,11 +30,15 @@
     <string name="label_description">Descrição</string>
     <string name="placeholder_description">Ex: Aluguel</string>
     <string name="label_date">Data</string>
-    <string name="label_transaction_type">Tipo de Movimentação</string>
+    <string name="section_transaction_type">Tipo de Movimentação</string>
     <string name="title_financial_tip">Dica Financeira</string>
     <string name="label_recommended_category">Categoria Recomendada</string>
     <string name="action_save">Salvar</string>
 
     <string name="currency_symbol">R$</string>
     <string name="date_format_pattern">dd/MM/yyyy</string>
+    <string name="transaction_amount_error_message">The value must be greater than zero</string>
+    <string name="transaction_description_error_message">The description cannot be empty</string>
+    <string name="transaction_save_error_message">Error saving: %s</string>
+    <string name="button_save_transaction">Salvar Transação</string>
 </resources>

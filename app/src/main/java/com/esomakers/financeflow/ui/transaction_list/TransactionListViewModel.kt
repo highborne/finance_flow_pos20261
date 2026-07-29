@@ -23,11 +23,6 @@ class TransactionListViewModel (
     private fun observeTransactions() {
         viewModelScope.launch{
             repository.getTransactionsStream().collect { transactions ->
-                //remove
-//                if (transactions.isEmpty()) {
-//                    repository.createTestTransactions()
-//                }
-
                 val income = transactions
                     .filter { it.type == TransactionType.INCOME }
                     .sumOf {it.amount}

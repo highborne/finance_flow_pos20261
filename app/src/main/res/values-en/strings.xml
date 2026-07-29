@@ -6,6 +6,7 @@
 
     <string name="category_salary">Salary</string>
     <string name="category_investments">Investments</string>
+    <string name="category_freelance">Freelance</string>
     <string name="category_other_income">Other Income</string>
 
     <string name="category_housing">Housing</string>
@@ -29,11 +30,15 @@
     <string name="label_description">Description</string>
     <string name="placeholder_description">e.g. Rent</string>
     <string name="label_date">Date</string>
-    <string name="label_transaction_type">Transaction Type</string>
+    <string name="section_transaction_type">Transaction Type</string>
     <string name="title_financial_tip">Financial Tip</string>
     <string name="label_recommended_category">Recommended Category</string>
     <string name="action_save">Save</string>
 
     <string name="currency_symbol">R$</string>
     <string name="date_format_pattern">MM/dd/yyyy</string>
+    <string name="transaction_amount_error_message">O valor deve ser maior que zero</string>
+    <string name="transaction_description_error_message">A descrição não pode estar vazia</string>
+    <string name="transaction_save_error_message">Erro ao salvar: %s</string>
+    <string name="button_save_transaction">Save Transaction</string>
 </resources>
