@@ -13,7 +13,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/highborne/finance_flow_pos20261">
-    <img src="https://raw.githubusercontent.com/highborne/finance_flow_pos20261/main/app/src/main/res/drawable/ic_launcher_foreground.xml](app/src/main/res/drawable/ic_launcher_foreground.xml)" alt="Logo" width="100" height="100">
+    <img src="https://github.com/highborne/finance_flow_pos20261/blob/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" alt="Logo" width="100" height="100">
   </a>
 
 <h3 align="center">FinanceFlow</h3>
