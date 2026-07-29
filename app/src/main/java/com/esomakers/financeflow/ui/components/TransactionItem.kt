@@ -23,10 +23,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import com.esomakers.financeflow.R
 import com.esomakers.financeflow.data.model.Transaction
+import com.esomakers.financeflow.data.model.TransactionCategory
 import com.esomakers.financeflow.data.model.TransactionType
 import com.esomakers.financeflow.ui.theme.ExpenseRed
+import com.esomakers.financeflow.ui.theme.FinanceFlowTheme
 import com.esomakers.financeflow.ui.theme.IncomeGreen
 import com.esomakers.financeflow.ui.theme.Spacing
 import com.esomakers.financeflow.ui.theme.SurfaceDark
@@ -40,12 +43,13 @@ fun TransactionItem(
     transaction: Transaction,
     modifier: Modifier = Modifier
 ) {
-    val currencyFormat = NumberFormat.getCurrencyInstance()
+    val currencyFormat = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
     val dateFormat =  SimpleDateFormat(stringResource(id = R.string.date_format_pattern), Locale("pt", "BR")).format(Date(transaction.date))
 
     val isIncome = transaction.type == TransactionType.INCOME
     val valuePrefix = if (isIncome) "+ " else "- "
     val valueColor = if (isIncome) IncomeGreen else ExpenseRed
+
     val icon = if (isIncome) Icons.Default.ArrowUpward else Icons.Default.ArrowDownward
     val iconBg = valueColor.copy(alpha = 0.1f)
 
@@ -91,11 +95,30 @@ fun TransactionItem(
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = dateFormat.format(Date(transaction.date)),
+                    text = dateFormat,
                     style = MaterialTheme.typography.bodySmall,
                     color = TextMutedDark
                 )
             }
         }
+    }
+}
+
+
+@Preview
+@Composable
+private fun TransactionItemPreview() {
+    FinanceFlowTheme {
+        TransactionItem(
+            transaction = Transaction(
+                id = "lxqbvwP4wJj9ShIsk8dA",
+                description = "Pagamento Aluguel",
+                amount = 1200.0,
+                date = System.currentTimeMillis(),
+                type = TransactionType.EXPENSE,
+                category = TransactionCategory.HOUSING
+            ),
+            modifier = Modifier
+        )
     }
 }
