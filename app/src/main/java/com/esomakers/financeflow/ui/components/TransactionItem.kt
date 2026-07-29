@@ -43,8 +43,8 @@ fun TransactionItem(
     transaction: Transaction,
     modifier: Modifier = Modifier
 ) {
-    val currencyFormat = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
-    val dateFormat =  SimpleDateFormat(stringResource(id = R.string.date_format_pattern), Locale("pt", "BR")).format(Date(transaction.date))
+    val currencyFormat = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("pt-BR"))
+    val dateFormat =  SimpleDateFormat(stringResource(id = R.string.date_format_pattern), Locale.forLanguageTag("pt-BR")).format(Date(transaction.date))
 
     val isIncome = transaction.type == TransactionType.INCOME
     val valuePrefix = if (isIncome) "+ " else "- "
