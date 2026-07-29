@@ -213,13 +213,13 @@ fun TransactionAddScreen(
                         onValueChange = {},
                         readOnly = true,
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = categoryExpanded) },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().menuAnchor(type = androidx.compose.material3.ExposedDropdownMenuAnchorType.PrimaryNotEditable, enabled = !viewModel.isLoading),
                         colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
                         enabled = !viewModel.isLoading
                     )
 
                     ExposedDropdownMenu(
-                        expanded = categoryExpanded,
+                        expanded = categoryExpanded && !viewModel.isLoading,
                         onDismissRequest = { categoryExpanded = false }
                     ) {
                         categories.forEach { category ->
