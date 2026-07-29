@@ -13,7 +13,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/highborne/finance_flow_pos20261">
-    <img src="https://raw.githubusercontent.com/highborne/finance_flow_pos20261/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/highborne/finance_flow_pos20261/main/app/src/main/res/drawable/ic_launcher_foreground.xml](app/src/main/res/drawable/ic_launcher_foreground.xml)" alt="Logo" width="100" height="100">
   </a>
 
 <h3 align="center">FinanceFlow</h3>
@@ -161,18 +161,18 @@ Project Link: [https://github.com/highborne/finance_flow_pos20261](https://githu
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/esomakers/FinanceFlow.svg?style=for-the-badge
-[contributors-url]: https://github.com/esomakers/FinanceFlow/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/esomakers/FinanceFlow.svg?style=for-the-badge
-[forks-url]: https://github.com/esomakers/FinanceFlow/network/members
-[stars-shield]: https://img.shields.io/github/stars/esomakers/FinanceFlow.svg?style=for-the-badge
-[stars-url]: https://github.com/esomakers/FinanceFlow/stargazers
-[issues-shield]: https://img.shields.io/github/issues/esomakers/FinanceFlow.svg?style=for-the-badge
-[issues-url]: https://github.com/esomakers/FinanceFlow/issues
-[license-shield]: https://img.shields.io/github/license/esomakers/FinanceFlow.svg?style=for-the-badge
-[license-url]: https://github.com/esomakers/FinanceFlow/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/highborne/finance_flow_pos20261.svg?style=for-the-badge
+[contributors-url]: https://github.com/highborne/finance_flow_pos20261/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/highborne/finance_flow_pos20261.svg?style=for-the-badge
+[forks-url]: https://github.com/highborne/finance_flow_pos20261/network/members
+[stars-shield]: https://img.shields.io/github/stars/highborne/finance_flow_pos20261.svg?style=for-the-badge
+[stars-url]: https://github.com/highborne/finance_flow_pos20261/stargazers
+[issues-shield]: https://img.shields.io/github/issues/highborne/finance_flow_pos20261.svg?style=for-the-badge
+[issues-url]: https://github.com/highborne/finance_flow_pos20261/issues
+[license-shield]: https://img.shields.io/github/license/highborne/finance_flow_pos20261.svg?style=for-the-badge
+[license-url]: https://github.com/highborne/finance_flow_pos20261/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/esomakers
+[linkedin-url]: https://www.linkedin.com/in/evertonco/
 [Kotlin-badge]: https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white
 [Kotlin-url]: https://kotlinlang.org/
 [Compose-badge]: https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white
