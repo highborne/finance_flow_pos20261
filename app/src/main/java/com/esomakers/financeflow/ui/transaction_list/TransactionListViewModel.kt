@@ -2,6 +2,7 @@ package com.esomakers.financeflow.ui.transaction_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.esomakers.financeflow.data.model.Transaction
 import com.esomakers.financeflow.data.model.TransactionType
 import com.esomakers.financeflow.data.repository.TransactionRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -9,6 +10,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+
+data class TransactionListUiState(
+    val totalBalance: Double = 0.0,
+    val totalExpanses: Double = 0.0,
+    val totalIncome: Double = 0.0,
+    val transactions: List<Transaction> = emptyList()
+)
 
 class TransactionListViewModel (
     private val repository: TransactionRepository = TransactionRepository()

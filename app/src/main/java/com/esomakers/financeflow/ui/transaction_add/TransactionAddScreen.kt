@@ -1,5 +1,6 @@
 package com.esomakers.financeflow.ui.transaction_add
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,6 +33,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -42,12 +45,32 @@ import com.esomakers.financeflow.ui.components.TransactionTypeCard
 import com.esomakers.financeflow.ui.theme.ExpenseRed
 import com.esomakers.financeflow.ui.theme.IncomeGreen
 import com.esomakers.financeflow.ui.theme.Spacing
+import com.esomakers.financeflow.ui.util.CurrencyAmountTransformation
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TransactionAddScreen(
     modifier: Modifier = Modifier,
     viewModel: TransactionAddViewModel = viewModel(),
+    onNavigateBack: () -> Unit = {}
 ) {
+    val context = LocalContext.current
+    val successMessage = stringResource(id = R.string.transaction_save_success_message)
+
+    LaunchedEffect(viewModel.isSaveSuccess) {
+        if (viewModel.isSaveSuccess) {
+            Toast.makeText(context, successMessage, Toast.LENGTH_SHORT).show()
+            onNavigateBack()
+        }
+    }
+
+    LaunchedEffect(viewModel.errorMessage) {
+        viewModel.errorMessage?.let { error ->
+            Toast.makeText(context, error.asString(context), Toast.LENGTH_LONG).show()
+            viewModel.clearError()
+        }
+    }
+
     val focusRequester = remember { FocusRequester() }
     var showDatePicker by remember { mutableStateOf(false) }
     val datePickerState = rememberDatePickerState(
@@ -85,7 +108,8 @@ fun TransactionAddScreen(
 
     Scaffold(
         containerColor = androidx.compose.material3.MaterialTheme.colorScheme.background
-    ) { innerPadding: PaddingValues ->
+    ) {
+        innerPadding: PaddingValues ->
         Column(modifier = modifier.padding(innerPadding)) {
             OutlinedTextField(
                 value = viewModel.transactionValue,
@@ -99,12 +123,11 @@ fun TransactionAddScreen(
                         Text(text = stringResource(id = R.string.transaction_amount_error_message))
                     }
                 },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-                    .focusRequester(focusRequester),
+                visualTransformation = CurrencyAmountTransformation(),
+                modifier = Modifier.fillMaxWidth().padding(Spacing.small).focusRequester(focusRequester),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                enabled = !viewModel.isLoading
+                enabled = !viewModel.isLoading,
+                singleLine = true
             )
 
             OutlinedTextField(
@@ -119,27 +142,19 @@ fun TransactionAddScreen(
                         Text(text = stringResource(id = R.string.transaction_description_error_message))
                     }
                 },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
+                modifier = Modifier.fillMaxWidth().padding(Spacing.small),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 enabled = !viewModel.isLoading
             )
 
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable(enabled = !viewModel.isLoading) { showDatePicker = true }
-            ) {
+            Box(modifier = Modifier.fillMaxWidth().clickable(enabled = !viewModel.isLoading) { showDatePicker = true }) {
                 OutlinedTextField(
                     value = viewModel.formattedDate,
                     onValueChange = { },
                     label = {
                         Text(text = stringResource(id = R.string.label_date).uppercase())
                     },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(Spacing.small),
+                    modifier = Modifier.fillMaxWidth().padding(Spacing.small),
                     readOnly = true,
                     enabled = false,
                     colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
@@ -151,9 +166,7 @@ fun TransactionAddScreen(
                 )
             }
 
-            Column(modifier = Modifier
-                .fillMaxWidth()
-                .padding(Spacing.small)) {
+            Column(modifier = Modifier.fillMaxWidth().padding(Spacing.small)) {
                 Text(
                     text = stringResource(id = R.string.section_transaction_type).uppercase()
                 )
@@ -161,9 +174,7 @@ fun TransactionAddScreen(
 
             Column(modifier = Modifier.fillMaxWidth()) {
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(Spacing.small),
+                    modifier = Modifier.fillMaxWidth().padding(Spacing.small),
                     horizontalArrangement = Arrangement.spacedBy(Spacing.small)
                 ) {
                     TransactionTypeCard(
@@ -186,9 +197,7 @@ fun TransactionAddScreen(
                 }
             }
 
-            Column(modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = Spacing.small)) {
+            Column(modifier = Modifier.fillMaxWidth().padding(vertical = Spacing.small)) {
                 Text(
                     text = stringResource(id = R.string.label_recommended_category).uppercase(),
                     modifier = Modifier.padding(horizontal = Spacing.small)
@@ -197,18 +206,14 @@ fun TransactionAddScreen(
                 ExposedDropdownMenuBox(
                     expanded = categoryExpanded && !viewModel.isLoading,
                     onExpandedChange = { if (!viewModel.isLoading) categoryExpanded = !categoryExpanded },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(Spacing.small)
+                    modifier = Modifier.fillMaxWidth().padding(Spacing.small)
                 ) {
                     OutlinedTextField(
                         value = stringResource(id = viewModel.transactionCategory.labelRes),
                         onValueChange = {},
                         readOnly = true,
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = categoryExpanded) },
-                        modifier = Modifier
-                            .menuAnchor()
-                            .fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),
                         colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
                         enabled = !viewModel.isLoading
                     )
@@ -232,9 +237,7 @@ fun TransactionAddScreen(
 
             Button(
                 onClick = { viewModel.onTransactionSave() },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(Spacing.small),
+                modifier = Modifier.fillMaxWidth().padding(Spacing.small),
                 enabled = !viewModel.isLoading
             ) {
                 if (viewModel.isLoading) {

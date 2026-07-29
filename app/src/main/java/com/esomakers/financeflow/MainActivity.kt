@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -23,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,7 +28,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.esomakers.financeflow.ui.theme.FinanceFlowTheme
 import com.esomakers.financeflow.ui.theme.Spacing
-import com.esomakers.financeflow.ui.theme.Spacing.medium
 import com.esomakers.financeflow.ui.transaction_add.TransactionAddScreen
 import com.esomakers.financeflow.ui.transaction_list.TransactionListScreen
 
@@ -57,12 +52,9 @@ class MainActivity : ComponentActivity() {
 fun FinanceFlowApp() {
     val navController = rememberNavController()
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .statusBarsPadding().statusBarsPadding()) {
+    Column(modifier = Modifier.fillMaxSize().statusBarsPadding().statusBarsPadding()) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth().padding(Spacing.small),
+            modifier = Modifier.fillMaxWidth().padding(Spacing.small),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
@@ -80,13 +72,7 @@ fun FinanceFlowApp() {
 
         HorizontalDivider()
 
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-                .padding(Spacing.small)
-
-        ) {
+        Box(modifier = Modifier.fillMaxWidth().padding(Spacing.small).weight(1f)) {
             NavHost(
                 navController = navController,
                 startDestination = "transaction_list"
@@ -94,11 +80,11 @@ fun FinanceFlowApp() {
                 composable("transaction_list") {
                     TransactionListScreen(
                         onNavigateToAddTransaction = {
-                            navController.navigate("add_transaction")
+                            navController.navigate("transaction_add")
                         }
                     )
                 }
-                composable("add_transaction") {
+                composable("transaction_add") {
                     TransactionAddScreen(
                         onNavigateBack = {
                             navController.popBackStack()

@@ -45,7 +45,11 @@ class TransactionAddViewModel (
         private set
 
     fun onTransactionValueChange(newValue: String){
-        transactionValue = newValue
+        val cleanInput = newValue.filter { it.isDigit() }
+
+        if (cleanInput.length <= 10) {
+            transactionValue = cleanInput
+        }
     }
 
     fun onTransactionDescriptionChange(newDescription: String){
@@ -70,15 +74,15 @@ class TransactionAddViewModel (
     }
 
     fun onTransactionSave() {
-        val amount = transactionValue.toDoubleOrNull() ?: 0.0
+        val amount = (transactionValue.toDoubleOrNull() ?: 0.0) / 100.0
 
-        if(amount <= 0.0){
-            errorMessage = UiText.StringResource(resId = R.string.transaction_amount_error_message)
+        if (amount <= 0.0) {
+            errorMessage = UiText.StringResource(R.string.transaction_amount_error_message)
             return
         }
 
-        if (transactionDescription.isBlank()){
-            errorMessage = UiText.StringResource(resId = R.string.transaction_description_error_message)
+        if (transactionDescription.isBlank()) {
+            errorMessage = UiText.StringResource(R.string.transaction_description_error_message)
             return
         }
 
@@ -100,6 +104,7 @@ class TransactionAddViewModel (
             if(result.isSuccess){
                 isSaveSuccess = true
             } else {
+
                 errorMessage = UiText.StringResource(
                     R.string.transaction_save_error_message,
                     result.exceptionOrNull()?.message ?: ""
@@ -107,6 +112,7 @@ class TransactionAddViewModel (
             }
         }
     }
+
 
     val formattedDate: String by derivedStateOf {
         DATE_FORMATTER.format(Instant.ofEpochMilli(transactionDate))

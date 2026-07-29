@@ -47,13 +47,4 @@ class TransactionRepository (
             }
         awaitClose { listener.remove() }
     }
-
-    suspend fun deleteTransaction(transactionId: String): Result<Unit> {
-        return try {
-            collectionRef.document(transactionId).delete().await()
-            Result.success(Unit)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
 }

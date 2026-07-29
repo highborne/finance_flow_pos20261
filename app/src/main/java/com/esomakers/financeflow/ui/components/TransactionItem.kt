@@ -1,4 +1,4 @@
-package com.esomakers.financeflow.ui.transaction_list
+package com.esomakers.financeflow.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -21,7 +21,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import com.esomakers.financeflow.R
 import com.esomakers.financeflow.data.model.Transaction
 import com.esomakers.financeflow.data.model.TransactionType
 import com.esomakers.financeflow.ui.theme.ExpenseRed
@@ -39,8 +41,7 @@ fun TransactionItem(
     modifier: Modifier = Modifier
 ) {
     val currencyFormat = NumberFormat.getCurrencyInstance()
-
-    val dateFormat =  SimpleDateFormat("dd/MM/yyyy", Locale("pt", "BR")).format(Date(transaction.date))
+    val dateFormat =  SimpleDateFormat(stringResource(id = R.string.date_format_pattern), Locale("pt", "BR")).format(Date(transaction.date))
 
     val isIncome = transaction.type == TransactionType.INCOME
     val valuePrefix = if (isIncome) "+ " else "- "
